@@ -1,0 +1,16 @@
+c:\users\asl\source\repos\DP\DP\bin\Debug\csfml-audio-2.dll
+c:\users\asl\source\repos\DP\DP\bin\Debug\csfml-graphics-2.dll
+c:\users\asl\source\repos\DP\DP\bin\Debug\csfml-window-2.dll
+c:\users\asl\source\repos\DP\DP\bin\Debug\DP.exe.config
+c:\users\asl\source\repos\DP\DP\bin\Debug\DP.exe
+c:\users\asl\source\repos\DP\DP\bin\Debug\DP.pdb
+c:\users\asl\source\repos\DP\DP\bin\Debug\sfmlnet-audio-2.dll
+c:\users\asl\source\repos\DP\DP\bin\Debug\sfmlnet-graphics-2.dll
+c:\users\asl\source\repos\DP\DP\bin\Debug\sfmlnet-window-2.dll
+c:\users\asl\source\repos\DP\DP\obj\Debug\DP.csprojAssemblyReference.cache
+c:\users\asl\source\repos\DP\DP\obj\Debug\DP.Properties.Resources.resources
+c:\users\asl\source\repos\DP\DP\obj\Debug\DP.csproj.GenerateResource.cache
+c:\users\asl\source\repos\DP\DP\obj\Debug\DP.csproj.CoreCompileInputs.cache
+c:\users\asl\source\repos\DP\DP\obj\Debug\DP.csproj.CopyComplete
+c:\users\asl\source\repos\DP\DP\obj\Debug\DP.exe
+c:\users\asl\source\repos\DP\DP\obj\Debug\DP.pdb
