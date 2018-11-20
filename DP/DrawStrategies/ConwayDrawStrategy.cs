@@ -17,8 +17,6 @@ namespace DrawStrategies
                     bool state = oldGrid.Cells[x][y].State;
                     int neighboorsState = oldGrid.Cells[x][y].CoundNeighboors(oldGrid);
 
-                    if (x == 81 && y == 56)
-                        Console.WriteLine("hello wl");
                     if (state)
                     {
                         if (neighboorsState < 2 || neighboorsState > 3)

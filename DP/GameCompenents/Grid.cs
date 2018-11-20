@@ -16,12 +16,12 @@ namespace GameCompenents
         public IDrawStrategy DrawStrategy{get;set;}
         public IInitStrategy InitStrategy { get; set; }
 
-        public Grid( int height, int width )
+        public Grid( int height, int width , IDrawStrategy drawStrategy, IInitStrategy initStrategy  )
         {
             Width = width;
             Height = height;
-            DrawStrategy = new ConwayDrawStrategy();
-            InitStrategy = new FirstInitStrategy();
+            DrawStrategy = drawStrategy;
+            InitStrategy = initStrategy; 
             Cells = InitStrategy.Init(Height, Width);
 
         }
@@ -36,7 +36,7 @@ namespace GameCompenents
 
         private Grid Copy()
         {
-            Grid newGrid = new Grid(Height, Width);
+            Grid newGrid = new Grid(Height, Width, DrawStrategy, InitStrategy);
             for (int x = 0; x < Height; x++)
             {
                 for (int y = 0; y < Width; y++)

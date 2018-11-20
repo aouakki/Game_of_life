@@ -43,10 +43,7 @@ namespace GameCompenents
 
         public Grid Build()
         {
-            Grid grid = new Grid(Height, Width);
-            grid.DrawStrategy = DrawStrategy;
-            grid.InitStrategy = InitStrategy;
-            return grid; 
+            return new Grid(Height, Width, DrawStrategy, InitStrategy);
         }
     }
 }

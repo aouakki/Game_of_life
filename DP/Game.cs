@@ -27,7 +27,12 @@ namespace LifeGame
             Height = height * cell_dimension;
             Width = width * cell_dimension;
             Window = new RenderWindow(new VideoMode((uint)(Height), (uint)(Width)), "Jeux de vie");
-            grid = new Grid(height, width);
+            grid = new GridBuilder()
+                .WithWidth(width)
+                .WithHeight(height)
+                .WithInitStrategy("First")
+                .WithDrawStrategy("Conway")
+                .Build();
             Background = createSprite(grid);
             LastTime = GetCurrentTime(); 
 
@@ -51,23 +56,28 @@ namespace LifeGame
             int y = cell.Y;
             bool state = cell.State;
             Color color = offColor;
-
-            for (int xi = x * cell_dimension; xi < x * cell_dimension + cell_dimension; xi++)
+            int xi_max = x * cell_dimension + cell_dimension;
+            int yi_max = y * cell_dimension + cell_dimension; 
+            for (int xi = x * cell_dimension; xi < xi_max; xi++)
             {
-                for (int yi = y * cell_dimension; yi < y * cell_dimension + cell_dimension; yi++)
+                for (int yi = y * cell_dimension; yi <yi_max ; yi++)
                 {
                     if (state)
                         color = onColor;
                     else
                         color = offColor;
+                   
+                    if (!(xi > 1499 || yi > 699))
+                    {
+                        image.SetPixel((uint)xi, (uint)yi, color);
 
-                    image.SetPixel((uint)xi, (uint)yi, color);
-
-                    //draw border 
-                    if (xi == x * cell_dimension || yi == y * cell_dimension)
-                        image.SetPixel((uint)xi, (uint)yi, borderColor);
-
+                        //draw border 
+                        if (xi == x * cell_dimension || yi == y * cell_dimension)
+                            image.SetPixel((uint)xi, (uint)yi, borderColor);
+                    }
                 }
+                
+
             }
             return image;
         }
@@ -117,7 +127,6 @@ namespace LifeGame
                 if(GetCurrentTime()-LastTime > TimeBtwFrames)
                 {
                     updateSprite();
-                    Console.WriteLine("===> Hello ..."); 
                 }
                 Window.DispatchEvents();
                 Render();
