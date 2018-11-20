@@ -55,12 +55,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DrawStrategies\DrawStrategyFactory.cs" />
+    <Compile Include="InitStrategies\InitStrategyFactory.cs" />
+    <Compile Include="GameCompenents\Cell.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Game.cs" />
+    <Compile Include="DrawStrategies\ConwayDrawStrategy.cs" />
+    <Compile Include="DrawStrategies\SecondDrawStrategy.cs" />
+    <Compile Include="DrawStrategies\FirstDrawStrategy.cs" />
+    <Compile Include="GameCompenents\GridBuilder.cs" />
+    <Compile Include="GameCompenents\Grid.cs" />
+    <Compile Include="DrawStrategies\IDrawStrategy.cs" />
+    <Compile Include="InitStrategies\FirstInitStrategy.cs" />
+    <Compile Include="InitStrategies\IInitStrategy.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -98,5 +110,6 @@
     <Content Include="libsndfile-1.dll" />
     <Content Include="openal32.dll" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
