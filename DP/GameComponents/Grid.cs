@@ -7,7 +7,7 @@ using DrawStrategies;
 using InitStrategies;
 using GUI;
 
-namespace GameCompenents
+namespace GameComponents
 {
     class Grid
     {
@@ -28,6 +28,15 @@ namespace GameCompenents
             Cells = InitStrategy.Init(Height, Width);
             GridObservers = observers; 
         }
+        public Grid(int height, int width, IDrawStrategy drawStrategy, List<IGridObserver> observers)
+        {
+            Width = width;
+            Height = height;
+            DrawStrategy = drawStrategy;
+            InitStrategy = new EmptyInitStrategy();
+            Cells = InitStrategy.Init(Height, Width);
+            GridObservers = observers;
+        }
 
         public void addObserver(IGridObserver window)
         {
@@ -47,7 +56,7 @@ namespace GameCompenents
 
         private Grid Copy()
         {
-            Grid newGrid = new Grid(Height, Width, DrawStrategy, InitStrategy, GridObservers);
+            Grid newGrid = new Grid(Height, Width, DrawStrategy, GridObservers);
             for (int x = 0; x < Height; x++)
             {
                 for (int y = 0; y < Width; y++)

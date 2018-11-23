@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using SFML.Graphics;
 using SFML.Window;
-using GameCompenents;
+using GameComponents;
 using System.Threading.Tasks;
 
 namespace GUI
@@ -11,7 +11,7 @@ namespace GUI
     class  BackgroundFacade
     {
         Color onColor = new Color(0x52, 0x00, 0x52);
-        Color offColor = new Color(0xFF, 0xFF, 0xFF);
+        Color offColor = new Color(0x62, 0x94, 0xe0);
         Color borderColor = new Color(0x00, 0x00, 0x00);
         public int cell_dimension = 10;
 

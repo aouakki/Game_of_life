@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using GameCompenents;
+using GameComponents;
 
 namespace DrawStrategies
 {
@@ -30,7 +30,6 @@ namespace DrawStrategies
                     {
                         if (neighboorsState >=2)
                             newGrid.UpdateCell(x, y, true);
-              
                     }
                 }
             }

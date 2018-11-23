@@ -3,12 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using GameCompenents;
 
-namespace InitStrategies
+namespace GameComponents
 {
-    interface IInitStrategy
+    interface IGridObserver
     {
-         Cell[][] Init(int height, int width);
+         void UpdateToNextLevel(Grid grid);
     }
 }

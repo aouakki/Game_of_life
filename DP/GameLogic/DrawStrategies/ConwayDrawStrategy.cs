@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using GameCompenents;
+using GameComponents;
 
 namespace DrawStrategies
 {
@@ -20,16 +20,15 @@ namespace DrawStrategies
                     if (state)
                     {
                         if (neighboorsState < 2 || neighboorsState > 3)
-                            newGrid.Cells[x][y].State = false;
-                            
+                            newGrid.UpdateCell(x, y, false);
 
-                        if (neighboorsState == 2 || neighboorsState == 3)
-                            newGrid.Cells[x][y].State = true;
+                        else if (neighboorsState == 2 || neighboorsState == 3)
+                            newGrid.UpdateCell(x, y, true);
                     }
                     else
                     {
                         if (neighboorsState == 3)
-                            newGrid.Cells[x][y].State = true;
+                            newGrid.UpdateCell(x, y, true);
                     }
              
                         

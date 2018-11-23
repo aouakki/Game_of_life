@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using SFML.Graphics;
 using SFML.Window;
-using GameCompenents;
+using GameComponents;
 using System.Threading.Tasks;
 
 namespace GUI
@@ -18,9 +18,8 @@ namespace GUI
         public Sprite Background; 
         public int TimeBtwFrames = 500;
         public bool stop = false;
-        public event EventHandler UserEntryStop;
-        public Sprite Bcg { get; set; }
         public Grid Grid;
+        public long LastSpriteTime=0 ; 
 
         public GUIWindow(Grid grid)
         {
@@ -29,6 +28,7 @@ namespace GUI
             int Height = grid.Height * BcgManager.cell_dimension;
             int Width = grid.Width * BcgManager.cell_dimension;
             GUI = new RenderWindow(new VideoMode((uint)(Height), (uint)(Width)), "Jeux de vie");
+            LastSpriteTime = DateTime.Now.Ticks / TimeSpan.TicksPerMillisecond;
         }
 
         /// events 
@@ -53,6 +53,22 @@ namespace GUI
         {
             return GUI.IsOpen(); 
         }
+
+        private bool HasSpriteElapsed()
+        {
+            long now = DateTime.Now.Ticks / TimeSpan.TicksPerMillisecond;
+            long diff = now - LastSpriteTime; 
+            if ( diff > TimeBtwFrames)
+            {
+                LastSpriteTime = now;
+                return true;
+            }
+            return false; 
+
+
+        }
+
+        
        
         
         public void Show()
@@ -71,7 +87,6 @@ namespace GUI
 
         private void Render(Grid grid)
         {
-            
                 if (grid.ModificationsFromLast != 0)
                 {
                     System.Threading.Thread.Sleep(TimeBtwFrames / 10);
@@ -79,7 +94,8 @@ namespace GUI
                     GUI.Draw(Background);
 
                 }
-       
+            
+
         }
 
         public void UpdateToNextLevel(Grid grid)

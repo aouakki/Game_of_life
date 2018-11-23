@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using GameCompenents;
+using GameComponents;
 
 namespace InitStrategies
 {
@@ -26,9 +26,9 @@ namespace InitStrategies
                 }
             }
 
-            Cells[80][55] = new Cell(80, 55, true);
-            Cells[80][56] = new Cell(80, 56, true);
-            Cells[80][57] = new Cell(80, 57, true);
+            Cells[75][25] = new Cell(75, 34, true);
+            Cells[75][26] = new Cell(75, 35, true);
+            Cells[75][27] = new Cell(75, 36, true);
             return Cells;
         }
     }

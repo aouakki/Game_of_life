@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using DP;
-using GameCompenents;
+using GameComponents;
 
 namespace DrawStrategies 
 {

@@ -14,6 +14,8 @@ namespace DrawStrategies
             {
                 case "First":
                     return new FirstInitStrategy();
+                case "File":
+                    return new FileInitStrategy();
                 default:
                     return new FirstInitStrategy();
             }
