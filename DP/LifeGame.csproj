@@ -55,7 +55,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App.cs" />
     <Compile Include="DrawStrategies\DrawStrategyFactory.cs" />
+    <Compile Include="GameCompenents\IGridObserver.cs" />
+    <Compile Include="GUI\BackgroundFacade.cs" />
+    <Compile Include="GUI\Window.cs" />
     <Compile Include="InitStrategies\InitStrategyFactory.cs" />
     <Compile Include="GameCompenents\Cell.cs" />
     <Compile Include="Form1.cs">

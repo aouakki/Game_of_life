@@ -21,16 +21,16 @@ namespace DrawStrategies
 
                     if (state)
                     {
-
                         if (neighboorsState == 0)
-                            newGrid.Cells[x][y].State = false;
+                            newGrid.UpdateCell(x, y, false); 
                         else if (neighboorsState > 5)
-                            newGrid.Cells[x][y].State = false;
-                    }else
+                            newGrid.UpdateCell(x, y, false);
+                    }
+                    else
                     {
                         if (neighboorsState >=2)
-                            newGrid.Cells[x][y].State = true;
-
+                            newGrid.UpdateCell(x, y, true);
+              
                     }
                 }
             }

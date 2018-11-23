@@ -5,6 +5,7 @@ using SFML.Graphics;
 using SFML.Window;
 using DrawStrategies;
 using InitStrategies;
+using GUI;
 
 namespace GameCompenents
 {
@@ -15,28 +16,38 @@ namespace GameCompenents
         public int Height;
         public IDrawStrategy DrawStrategy{get;set;}
         public IInitStrategy InitStrategy { get; set; }
+        public int ModificationsFromLast = 0;
+        private List<IGridObserver> GridObservers = new List<IGridObserver>();
 
-        public Grid( int height, int width , IDrawStrategy drawStrategy, IInitStrategy initStrategy  )
+        public Grid( int height, int width , IDrawStrategy drawStrategy, IInitStrategy initStrategy, List<IGridObserver> observers  )
         {
             Width = width;
             Height = height;
             DrawStrategy = drawStrategy;
-            InitStrategy = initStrategy; 
+            InitStrategy = initStrategy;
             Cells = InitStrategy.Init(Height, Width);
-
+            GridObservers = observers; 
         }
 
-        
+        public void addObserver(IGridObserver window)
+        {
+            GridObservers.Add(window);
+        }
 
-        public Grid NextLevel()
+        public void NextLevel()
         {
             Grid newGrid = this.Copy();
-            return DrawStrategy.UpdateGrid(this,newGrid);
+            newGrid =  DrawStrategy.UpdateGrid(this,newGrid);
+            foreach (IGridObserver observer in GridObservers)
+            {
+                observer.UpdateToNextLevel(newGrid);
+            }
         }
+
 
         private Grid Copy()
         {
-            Grid newGrid = new Grid(Height, Width, DrawStrategy, InitStrategy);
+            Grid newGrid = new Grid(Height, Width, DrawStrategy, InitStrategy, GridObservers);
             for (int x = 0; x < Height; x++)
             {
                 for (int y = 0; y < Width; y++)
@@ -46,8 +57,19 @@ namespace GameCompenents
 
                 }
             }
-
+            newGrid.ModificationsFromLast = 0; 
             return newGrid; 
+        }
+
+        public void UpdateCell(int x, int y, bool state)
+        {
+            bool oldState = Cells[x][y].State; 
+            if(oldState != state)
+            {
+                Cells[x][y].State = state;
+                ModificationsFromLast = ModificationsFromLast + 1;
+            }
+
         }
     }
 }

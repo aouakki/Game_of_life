@@ -14,8 +14,9 @@ namespace GameCompenents
         public int Height;
         public IDrawStrategy DrawStrategy { get; set; }
         public IInitStrategy InitStrategy { get; set; }
+        private readonly List<IGridObserver> GridObservers = new List<IGridObserver>();
 
-       
+
         public GridBuilder WithInitStrategy(String initStrategy)
         {
             InitStrategy = new InitStrategyFactory().GetInitStrategy(initStrategy);
@@ -41,9 +42,15 @@ namespace GameCompenents
             return this;
         }
 
+        public GridBuilder AddObserver(IGridObserver observer)
+        {
+            GridObservers.Add(observer);
+            return this; 
+        }
+
         public Grid Build()
         {
-            return new Grid(Height, Width, DrawStrategy, InitStrategy);
+            return new Grid(Height, Width, DrawStrategy, InitStrategy, GridObservers);
         }
     }
 }

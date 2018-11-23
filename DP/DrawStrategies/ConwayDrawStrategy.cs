@@ -21,10 +21,10 @@ namespace DrawStrategies
                     {
                         if (neighboorsState < 2 || neighboorsState > 3)
                             newGrid.Cells[x][y].State = false;
+                            
 
                         if (neighboorsState == 2 || neighboorsState == 3)
                             newGrid.Cells[x][y].State = true;
-        
                     }
                     else
                     {
